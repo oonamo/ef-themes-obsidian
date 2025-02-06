@@ -1,0 +1,615 @@
+/*===============================================================
+                           Ef-Themes
+*===============================================================*/
+
+/* @settings
+name: ef-themes
+id: ef-themes-settings
+settings:
+
+# Colors
+-
+  id: ef-themes-color-section-header
+  title: Colors
+  description: Theme Accent and Flavors, Color Overrides, Extended Color Schemes
+  type: heading
+  level: 1
+  collapsed: true
+-
+  id: ef-themes-light-theme
+  title: Light Theme
+  description: Select Light Theme
+  type: class-select
+  allowEmpty: false
+  default: ef-spring
+  options:
+<lightthemes:start>
+<lightthemes:end>
+
+-
+  id: ef-themes-dark-theme
+  title: Dark Theme
+  description: Select Dark Theme
+  type: class-select
+  allowEmpty: false
+  default: ef-spring
+  options:
+<darkthemes:start>
+<darkthemes:end>
+
+# File Editor
+-
+  id: ef-themes-file-editor-header
+  title: File Editor & Markdown Elements
+  description: Callouts, Checkboxes, Codeblocks, Lists, Tables, Tags, etc.
+  type: heading
+  level: 1
+  collapsed: true
+-
+  id: et-active-line
+  title: Active line highlight
+  type: class-select
+  allowEmpty: false
+  default: et-no-highlight
+  options:
+  -
+    label: None
+    value: et-no-highlight
+  -
+    label: Highlight
+    value: et-current-line
+  -
+    label: Highlight + Border
+    value: et-current-line-border
+-
+  id: et-callout-style
+  title: Callout Stle
+  type: class-select
+  allowEmpty: false
+  default: et-callout-default
+  options:
+  -
+    label: Default
+    value: et-callout-default
+  -
+    label: Flat
+    value: et-callout-flat
+
+# Searching
+- 
+  id: ef-themes-search-heading
+  title: Searching
+  description: Search Styles
+  type: heading
+  level: 1
+  collapsed: true
+-
+  id: et-search-style
+  title: Search Style
+  type: class-select
+  allowEmpty: false
+  default: et-search-obsidian
+  options:
+  -
+    label: Obsidian Style
+    value: et-search-obsidian
+  -
+    label: Vim Style
+    value: et-search-vim
+
+# Callouts
+*/
+
+/* <themedef:start><themedef:end> */
+
+.theme-dark, .theme-light {
+  --background-modifier-border: var(--border);
+  /*--background-modifier-box-shadow: var(--border);*/
+  --background-modifier-box-shadow: rgba(0, 0, 0, 0.3);
+  --background-modifier-cover: var(--bg-dim);
+  --background-error-hover: var(--bg-err);
+  --background-error: var(--err);
+  --background-modifier-form-field-highlighted: rgba(0, 0, 0, 0.22);
+  --background-modifier-form-field: rgba(0, 0, 0, 0.3);
+  --background-modifier-success: var(--bg-info);
+  --background-primary-alt: var(--bg-alt);
+  --background-primary: var(--bg-main);
+  --background-secondary: var(--bg-inactive);
+  --background-secondary-alt: var(--bg-active);
+
+  --divider-color-hover: var(--border);
+  --divider-color: var(--border);
+  --highlight-mix-blend-mode: darken;
+  --interactive-accent: var(--bg-hover);
+  --interactive-accent-hover: var(--bg-hover-secondary);
+  --interactive-normal: var(--accent-3);
+  --interactive-hover: var(--bg-hover);
+  --interactive-success: var(--info);
+  --ribbon-background: var(--bg-inactive);
+  /*--scrollbar-active-th: rgba(255, 255, 255, 0.2);*/
+  /*--scrollbar-bg: rgba(255, 255, 255, 0.05);*/
+  /*--scrollbar-thumb-bg: rgba(255, 255, 255, 0.1);*/
+
+  --link-color-hover: var(--bg-blue-subtle);
+  --link-color: var(--link);
+  --link-decoration: underline;
+  --link-external-color-hover: var(--bg-blue-subtle);
+  --link-external-color: var(--link)
+  --link-external-decoration: wavy;
+  --link-unresolved-color: var(--err);
+  --link-unresolved-decoration-color: var(--err);
+
+
+  --text-accent                     : var(--fg-alt);
+  --text-accent-hover               : var(--bg-hover-secondary);
+  --text-error                      : var(--err);
+  --text-error-hover                : var(--bg-err);
+  --text-faint                      : var(--fg-dim);
+  --text-highlight-bg-active: var(--bg-green-subtle);
+  --text-highlight-bg: var(--bg-red-subtle);
+  --text-muted                      : var(--fg-dim);
+  --text-normal                     : var(--fg-main);
+  --text-on-accent                  : var(--fg-main);
+  --text-selection: var(--bg-region);
+
+  --code-background: var(--bg-active);
+  --code-comment: var(--comment);
+  --code-function: var(--fnname);
+  --code-important: var(--info)
+  --code-keyword: var(--keyword);
+  --code-normal: var(--fg-main);
+  --code-punctuation: var(--fg-dim);
+  --code-string: var(--string);
+  --code-value: var(--variable);
+
+  --table-background: transparent;
+  --table-border-color: var(--border);
+  /* TODO: Set variable for this */
+  --table-border-width: 1;
+  --table-header-background: transparent;
+  --table-header-color: var(--prose-table);
+  --table-selection: var(--bg-region);
+
+
+  /* TODO: Make this customizeble */
+  --tag-color: var(--prose-tag);
+  --tag-backround: var(--bg-magenta-subtle);
+  --tag-raduis: 0px;
+
+  --tab-curve: 0;
+  --tab-gap: 5px;
+  --tab-radius: 0;
+  --tab-radius-active: 0;
+  --tab-container-background: var(--bg-tab-other);
+  --tab-background-active: var(--bg-tab-current);
+
+
+  --input-radius: 0px;
+  --dropdown-background: var(--bg-inactive);
+  --prompt-border-width: 1px;
+  --prompt-border-color: var(--accent-0);
+  --nav-indentation-guide-color: var(--rainbow-0);
+  --nav-collapse-icon-color: var(--link);
+  --nav-collapse-icon-color: var(--link-alt);
+
+  --titlebar-background-focused: var(--bg-dim);
+
+  --caret-color: var(--cursor) !important;
+
+  --inline-title-color: var(--rainbow-0);
+  --h1-color: var(--rainbow-1);
+  --h2-color: var(--rainbow-2);
+  --h3-color: var(--rainbow-3);
+  --h4-color: var(--rainbow-4);
+  --h5-color: var(--rainbow-5);
+  --h6-color: var(--rainbow-6);
+
+  /* Canvas */
+  --canvas-background: var(--bg-main);
+  --canvas-color-1: var(--rainbow-1);
+  --canvas-color-2: var(--rainbow-2);
+  --canvas-color-3: var(--rainbow-3);
+  --canvas-color-4: var(--rainbow-4);
+  --canvas-color-5: var(--rainbow-5);
+  --canvas-color-6: var(--rainbow-6);
+
+
+  /* Italics */
+  --italic-color: var(--accent-1);
+
+
+  --metadata-label-text-color: var(--prose-metadata);
+
+  --status-bar-background: var(--bg-mode-line);
+  --status-bar-border-color: var(--border);
+  --status-bar-text-color: var(--fg-mode-line);
+
+  --graph-text: var(--fg-main);
+  --graph-line: var(--border);
+  --graph-node: var(--green);
+  --graph-node-unresolved: var(--bg-active);
+  --graph-node-focused: var(--yellow);
+  --graph-node-tag: var(--prose-tag);
+
+  * {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+}
+
+.HyperMD-codeblock.cm-line:not(.cm-active),
+cod,
+pre {
+  white-space: pre;
+  border-radius: 0 !important;
+  background: var(--bg-inactive) !important;
+  --code-background: var(--bg-inactive);
+}
+
+.et-current-line .markdown-source-view .cm-active.cm-line {
+  background-color: var(--bg-hl-line);
+}
+
+.et-current-line-border .markdown-source-view .cm-active.cm-line {
+  border-left: 2px solid var(--interactive-accent);
+  margin-left: -2px !important;
+  background-color: rgba(var(--accent-3), 0.4);
+}
+
+.cm-lineNumbers .cm-gutterElement.cm-active {
+  color: var(--fg-intense);
+}
+
+/*======== CURSOR MODS ==========*/
+.workspace-tab-header,
+.clickable-icon,
+.dropdown,
+.checkbox-container,
+input.slider,
+.task-list-item-checkbox,
+.vertical-tab-nav-item,
+.nav-folder-title,
+.nav-file-title,
+.tree-item,
+.tree-item-self.is-clickable,
+.workspace-tab-header-status-icon,
+.workspace-tab-header-inner-close-button,
+.CodeMirror-foldmarker,
+.CodeMirror-foldgutter-open,
+.CodeMirror-foldgutter-folded,
+.markdown-source-view.mod-cm6 .edit-block-button,
+.empty-state-action,
+.setting-hotkey-icon,
+.setting-add-hotkey-button,
+.setting-restore-hotkey-button,
+.spellchecker-dictionary-remove-button,
+.community-item,
+.status-bar-item.mod-clickable,
+.titlebar-button,
+.button,
+.frontmatter-container .frontmatter-container-header,
+.card.u-clickable,
+.list-item-part.clickable-icon,
+.u-clickable,
+.document-search-close-button,
+.markdown-preview-view .collapse-indicator,
+.markdown-source-view.mod-cm6 .cm-fold-indicator .collapse-indicator,
+.input[type=color],
+.menu-item,
+.modal-checkbox-label,
+.view-header-breadcrumb,
+.nav-action-button,
+.tree-item-inner,
+.callout.is-collapsible .callout-title,
+.modal-close-button {
+  cursor: var(--cursor) !important;
+}
+
+/* Obsidian Style */
+.et-search-obsidian .markdown-rendered .search-highlight > div {
+  box-shadow: none;
+  background-color: var(--bg-search-current);
+  border-radius: 2px;
+}
+
+.et-search-obsidian .markdown-rendered .search-highlight > div.is-active {
+  box-shadow: 0 0 0px 2px var(--bg-search-current);
+  background-color: var(--bg-search-current);
+  opacity: 1;
+}
+
+.et-search-obsidian .cm-s-obsidian span.obsidian-search-match-highlight {
+  box-shadow: 0 0 0px 2px var(--bg-completion);
+  background-color: var(--bg-completion);
+  border-radius: 2px;
+}
+
+.et-search-vim .markdown-rendered .search-highlight > div {
+  box-shadow: none;
+  background-color: var(--bg-search-current);
+  border-radius: 2px;
+}
+
+.et-search-vim .markdown-rendered .search-highlight > div.is-active {
+  box-shadow: 0 0 0px 2px var(--bg-search-current);
+  background-color: var(--bg-search-current);
+}
+
+.et-search-vim .cm-s-obsidian span.obsidian-search-match-highlight {
+  box-shadow: 0 0 0px 2px rgba(var(--accent-0), 0.5);
+  background-color: var(--accent-0);
+  color: var(--bg-main);
+  font-weight: bold;
+  border-radius: 2px;
+}
+
+/* tab bar */
+.workspace .mod-root .workspace-tab-header-container {
+  background: var(--bg-dim);
+}
+
+.workspace .mod-root .workspapce-tab-header {
+  background: var(--bg-dim);
+}
+
+.workspace .mod-root .workspace-tab-header-container-inner {
+  font-weight: bold;
+  background: var(--bg-dim);
+}
+
+.workspace .mod-root .workspace-tab-header.is-focused {
+  color: var(--fg-alt);
+  font-weight: bold;
+  border: 2px solid var(--bg-tab-current)
+}
+
+.suggestion-highlight {
+  color: var(--accent-0);
+}
+
+/* Callouts */
+.et-callout-flat > .callout-title > .callout-title-inner {
+  color: var(--bg-dim);
+}
+
+.et-callout-flat .callout {
+  padding: 15px;
+  border-radius: 0;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  mix-blend-mode: normal;
+
+  a svg {
+    padding-right: 3px;
+  }
+
+  .callout-title-inner,
+  em,
+  strong,
+  .cm-em,
+  .cm-strong {
+    color: var(--bg-dim);
+  }
+
+  * {
+    margin: 0px !important;
+  }
+
+  .cm-hmd-internal-link,
+  .internal-link,
+  .cm-url,
+  .external-link {
+    color: var(--bg-dim) !important;
+    text-decoration-thickness: 1px;
+    text-decoration: underline;
+    text-underline-offset: 1.5px;
+    text-decoration-style: wavy;
+  }
+
+  .cm-hmd-internal-link,
+  .internal-link {
+    /*text-decoration-color: #9f50e1;*/
+    text-decoration-color: var(--link);
+  }
+
+  .cm-url,
+  .external-link {
+    text-decoration-color: var(--link-alt);
+  }
+
+  a,
+  a:visited,
+  .cm-hmd-internal-link,
+  .cm-url,
+  .internal-link,
+  .external-link {
+    font-weight: bold;
+  }
+}
+
+
+.et-callout-flat .callout[data-callout=note] {
+  background: var(--blue);
+  color: var(--bg-dim);
+}
+.et-callout-flat .callout[data-callout=abstract], .et-callout-flat  .callout[data-callout=summary], .et-callout-flat  .callout[data-callout=tldr], .et-callout-flat  .callout[data-callout=seealso] {
+  background: var(--blue);
+  color: var(--bg-dim);
+}
+.et-callout-flat .callout[data-callout=info], .et-callout-flat  .callout[data-callout=todo], .et-callout-flat  .callout[data-callout=tip], .et-callout-flat  .callout[data-callout=hint], .et-callout-flat  .callout[data-callout=important] {
+  background: var(--cyan);
+  color: var(--bg-dim);
+}
+.et-callout-flat .callout[data-callout=success], .et-callout-flat  .callout[data-callout=check], .et-callout-flat  .callout[data-callout=done], .et-callout-flat  .callout[data-callout=question], .et-callout-flat  .callout[data-callout=help], .et-callout-flat  .callout[data-callout=faq] {
+  background: var(--green);
+  color: var(--bg-dim);
+}
+.et-callout-flat .callout[data-callout=warning], .et-callout-flat  .callout[data-callout=caution], .et-callout-flat  .callout[data-callout=attention] {
+  background: var(--yellow);
+  color: var(--bg-dim);
+}
+.et-callout-flat .callout[data-callout=failure], .et-callout-flat .callout[data-callout=fail], .et-callout-flat .callout[data-callout=missing] {
+  background: var(--red);
+  color: var(--bg-dim);
+}
+.et-callout-flat .callout[data-callout=danger], .et-callout-flat .callout[data-callout=error], .et-callout-flat .callout[data-callout=bug] {
+  background: var(--red);
+  color: var(--bg-dim);
+}
+.et-callout-flat .callout[data-callout=example] {
+  background: var(--magenta-cooler);
+  color: var(--bg-dim);
+}
+.et-callout-flat .callout[data-callout=quote], .et-callout-flat .callout[data-callout=cite] {
+  background: var(--bg-active);
+  color: var(--bg-dim);
+}
+
+.et-callout-default .callout {
+}
+
+.et-callout-default .callout[data-callout=note] {
+  background: var(--bg-blue-subtle)
+}
+.et-callout-default .callout[data-callout=abstract], et-callout-default  .callout[data-callout=summary], et-callout-default  .callout[data-callout=tldr], et-callout-default  .callout[data-callout=seealso] {
+  background: var(--bg-blue-intense);
+}
+.et-callout-default .callout[data-callout=info], et-callout-default  .callout[data-callout=todo], et-callout-default  .callout[data-callout=tip], et-callout-default  .callout[data-callout=hint], et-callout-default  .callout[data-callout=important] {
+  background: var(--bg-cyan-subtle);
+}
+.et-callout-default .callout[data-callout=success], et-callout-default  .callout[data-callout=check], et-callout-default  .callout[data-callout=done], et-callout-default  .callout[data-callout=question],  .callout[data-callout=help], et-callout-default  .callout[data-callout=faq] {
+  background: var(--bg-green-intense);
+}
+.et-callout-default .callout[data-callout=warning], et-callout-default  .callout[data-callout=caution], et-callout-default  .callout[data-callout=attention] {
+  background: var(--bg-yellow-intense);
+}
+.et-callout-default .callout[data-callout=failure], et-callout-default .callout[data-callout=fail], et-callout-default .callout[data-callout=missing] {
+  background: var(--bg-red-intense);
+}
+.et-callout-default .callout[data-callout=danger], et-callout-default .callout[data-callout=error], et-callout-default .callout[data-callout=bug] {
+  background: var(--bg-err);
+}
+.et-callout-default .callout[data-callout=example] {
+  background: var(--bg-magenta-subtle);
+}
+.et-callout-default .callout[data-callout=quote], et-callout-default .callout[data-callout=cite] {
+  background: var(--bg-active);
+}
+
+/* FROM: https://github.com/xero/evangelion.obsidian/blob/4c3cb1d03ca70119a878d403e8c3abe8c6b48218/theme.css#L716 */
+.et-callout-flat {
+    .callout[data-callout="default"] .callout-icon {
+    background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="lightblue" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-feather"><path d="M12.67 19a2 2 0 0 0 1.416-.588l6.154-6.172a6 6 0 0 0-8.49-8.49L5.586 9.914A2 2 0 0 0 5 11.328V18a1 1 0 0 0 1 1z"/><path d="M16 8 2 22"/><path d="M17.5 15H9"/></svg>');
+    }
+    .callout[data-callout="error"] .callout-icon {
+    background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="red" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-skull"><path d="m12.5 17-.5-1-.5 1h1z"/><path d="M15 22a1 1 0 0 0 1-1v-1a2 2 0 0 0 1.56-3.25 8 8 0 1 0-11.12 0A2 2 0 0 0 8 20v1a1 1 0 0 0 1 1z"/><circle cx="15" cy="12" r="1"/><circle cx="9" cy="12" r="1"/></svg>');
+    }
+    .callout[data-callout="caution"] .callout-icon,
+    .callout[data-callout="warning"] .callout-icon {
+    background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="orange" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-triangle-alert"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>');
+    }
+    .callout[data-callout="attention"] .callout-icon {
+    background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="lightblue" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-triangle-alert"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>');
+    }
+    .callout[data-callout="abstract"] .callout-icon {
+    background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="orange" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-scroll"><path d="M19 17V5a2 2 0 0 0-2-2H4"/><path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3"/></svg>');
+    }
+    .callout[data-callout="example"] .callout-icon {
+    background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="lightblue" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-marked"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/><path d="M10 2v8l3-3 3 3V2"/></svg>');
+    }
+    .callout[data-callout="question"] .callout-icon {
+    background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="lightblue" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle-question"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>');
+    }
+    .callout[data-callout="note"] .callout-icon {
+    background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="lightblue" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-notepad-text"><path d="M8 2v4"/><path d="M12 2v4"/><path d="M16 2v4"/><rect width="16" height="18" x="4" y="4" rx="2"/><path d="M8 10h6"/><path d="M8 14h8"/><path d="M8 18h5"/></svg>');
+    }
+    .callout[data-callout="fail"] .callout-icon,
+    .callout[data-callout="failure"] .callout-icon,
+    .callout[data-callout="missing"] .callout-icon {
+    background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="red" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>');
+    }
+    .callout[data-callout="hint"] .callout-icon {
+    background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="yellow" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lightbulb"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>');
+    }
+    .callout[data-callout="todo"] .callout-icon {
+    background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="lightblue" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-check"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9 12 2 2 4-4"/></svg>');
+    }
+    .callout[data-callout="faq"] .callout-icon {
+    background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="lightblue" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-square-text"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M13 8H7"/><path d="M17 12H7"/></svg>');
+    }
+    .callout[data-callout="quote"] .callout-icon {
+    background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="lightblue" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-quote"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/></svg>');
+    }
+    .callout[data-callout="help"] .callout-icon {
+    background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-life-buoy"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/><circle cx="12" cy="12" r="4"/></svg>');
+    }
+    .callout[data-callout="tldr"] .callout-icon,
+    .callout[data-callout="summary"] .callout-icon {
+    background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="orange" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clipboard-list"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg>');
+    }
+    .callout[data-callout="info"] .callout-icon {
+    background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="orange" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-text"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/><path d="M8 11h8"/><path d="M8 7h6"/></svg>');
+    }
+    .callout[data-callout="success"] .callout-icon,
+    .callout[data-callout="check"] .callout-icon,
+    .callout[data-callout="done"] .callout-icon {
+    background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="chartreuse" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>');
+    }
+    .callout[data-callout="important"] .callout-icon {
+    background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="red" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flame"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>');
+    }
+    .callout[data-callout="tip"] .callout-icon {
+    background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="chartreuse" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flame"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>');
+    }
+    .callout[data-callout="danger"] .callout-icon {
+    background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="red" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>');
+    }
+    .callout[data-callout="bug"] .callout-icon {
+    background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="red" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bug"><path d="m8 2 1.88 1.88"/><path d="M14.12 3.88 16 2"/><path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"/><path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6"/><path d="M12 20v-9"/><path d="M6.53 9C4.6 8.8 3 7.1 3 5"/><path d="M6 13H2"/><path d="M3 21c0-2.1 1.7-3.9 3.8-4"/><path d="M20.97 5c0 2.1-1.6 3.8-3.5 4"/><path d="M22 13h-4"/><path d="M17.2 17c2.1.1 3.8 1.9 3.8 4"/></svg>');
+    }
+
+    .callout[data-callout="default"],
+    .callout[data-callout="info"],
+    .callout[data-callout="tip"],
+    .callout[data-callout="bug"],
+    .callout[data-callout="danger"],
+    .callout[data-callout="abstract"],
+    .callout[data-callout="important"],
+    .callout[data-callout="success"],
+    .callout[data-callout="check"],
+    .callout[data-callout="done"],
+    .callout[data-callout="summary"],
+    .callout[data-callout="tldr"],
+    .callout[data-callout="help"],
+    .callout[data-callout="quote"],
+    .callout[data-callout="faq"],
+    .callout[data-callout="caution"],
+    .callout[data-callout="todo"],
+    .callout[data-callout="hint"],
+    .callout[data-callout="attention"],
+    .callout[data-callout="fail"],
+    .callout[data-callout="warning"],
+    .callout[data-callout="error"],
+    .callout[data-callout="failure"],
+    .callout[data-callout="missing"],
+    .callout[data-callout="example"],
+    .callout[data-callout="question"],
+    .callout[data-callout="note"] {
+    .callout-icon {
+      display: inline-flex;
+      width: 20px;
+      height: 20px;
+      background-repeat: none;
+      stroke: var(--border);
+      svg {
+        display: none !important;
+      }
+    }
+  }
+}
+
+/* Vim mode cursor highlight */
+.cm-focused .cm-fat-cursor {
+  background-color: var(--cursor) !important;
+  color: var(--bg-main) !important;
+}
