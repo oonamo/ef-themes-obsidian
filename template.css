@@ -32,7 +32,7 @@ settings:
   description: Select Dark Theme
   type: class-select
   allowEmpty: false
-  default: ef-spring
+  default: ef-dream
   options:
 <darkthemes:start>
 <darkthemes:end>
